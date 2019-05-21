@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.smart</groupId>
+    <artifactId>scaffold-bom</artifactId>
+    <version>1.0.0</version>
+    <name>scaffold-bom</name>
+    <packaging>pom</packaging>
+    <description>scaffold 公共版本控制</description>
+
+    <properties>
+        <scaffold.version>1.0.0</scaffold.version>
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
+        <jjwt.version>0.10.5</jjwt.version>
+        <mybatis-plus.version>3.1.0</mybatis-plus.version>
+        <mysql.connector.version>8.0.13</mysql.connector.version>
+        <swagger.core.version>1.5.22</swagger.core.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
+        <swagger.fox.version>2.9.2</swagger.fox.version>
+        <curator.version>2.10.0</curator.version>
+        <velocity.version>1.7</velocity.version>
+        <minio.version>6.0.2</minio.version>
+        <activiti.version>5.22.0</activiti.version>
+        <hutool.version>4.4.5</hutool.version>
+        <guava.version>20.0</guava.version>
+        <fastjson.version>1.2.51</fastjson.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--scaffold starter-->
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>core-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>log-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>lock-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>swagger-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>security-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.smart</groupId>
+                <artifactId>i18n-starter</artifactId>
+                <version>${scaffold.version}</version>
+            </dependency>
+            <!--mybatis plus extension,包含了mybatis plus core-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--mybatis-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--mysql 驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+            </dependency>
+            <!--swagger 最新依赖内置版本-->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <!--swagger 依赖-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.fox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${swagger.fox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--jjwt-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

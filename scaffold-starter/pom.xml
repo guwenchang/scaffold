@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.smart</groupId>
+        <artifactId>scaffold</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>scaffold-starter</artifactId>
+    <version>1.0.0</version>
+    <name>scaffold-starter</name>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>security-starter</module>
+        <module>core-starter</module>
+        <module>swagger-starter</module>
+        <module>log-starter</module>
+        <module>i18n-starter</module>
+        <module>lock-starter</module>
+    </modules>
+</project>

@@ -3,11 +3,8 @@ package com.smart.starter.log.config;
 
 import com.smart.starter.log.ConstantsLog;
 import com.smart.starter.log.aspect.OpLogAspect;
-import com.smart.starter.log.event.OpLogHandler;
 import com.smart.starter.log.event.OpLogListener;
 import com.smart.starter.log.filter.LogFilter;
-import com.smart.starter.security.filter.SmartSecurityContextHolderFilter;
-import com.smart.starter.security.jwt.UserOperator;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -46,13 +43,6 @@ public class OpLogConfiguration{
 	public OpLogAspect opLogAspect() {
 		return new OpLogAspect();
 	}
-
-	@Bean
-	@ConditionalOnMissingBean
-	public OpLogHandler opLogHandler() {
-		return new OpLogHandler();
-	}
-
 	/**
 	 * 请求过滤器
 	 * @return

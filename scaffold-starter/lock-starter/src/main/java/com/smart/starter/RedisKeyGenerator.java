@@ -1,4 +1,4 @@
-package com.smart.starter.lock;
+package com.smart.starter;
 
 
 import org.aspectj.lang.ProceedingJoinPoint;

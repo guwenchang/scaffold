@@ -1,7 +1,6 @@
-package com.smart.starter.lock;
+package com.smart.starter;
 
 
-import com.smart.starter.lock.annotation.RedisParam;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 

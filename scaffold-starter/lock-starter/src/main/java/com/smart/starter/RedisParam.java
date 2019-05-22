@@ -1,4 +1,4 @@
-package com.smart.starter.lock.annotation;
+package com.smart.starter;
 
 
 import java.lang.annotation.*;

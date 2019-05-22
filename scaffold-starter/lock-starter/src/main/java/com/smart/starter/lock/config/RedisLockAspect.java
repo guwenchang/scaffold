@@ -1,7 +1,7 @@
 package com.smart.starter.lock.config;
 
 
-import com.smart.starter.lock.RedisKeyGenerator;
+import com.smart.starter.RedisKeyGenerator;
 import com.smart.starter.lock.annotation.RedisLock;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

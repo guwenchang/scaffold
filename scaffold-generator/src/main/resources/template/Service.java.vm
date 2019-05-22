@@ -1,0 +1,49 @@
+package ${package}.${moduleName}.service;
+
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package}.${moduleName}.entity.${entityName};
+import ${package}.${moduleName}.param.${paramName};
+import ${package}.${moduleName}.param.${queryParamName};
+import ${package}.${moduleName}.result.${resultName};
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends IService<${entityName}> {
+
+
+  /**
+   * 根据id查询
+   * @param menuId
+   * @return
+   */
+    ${resultName} get(${pk.attrType} ${pk.lowerAttrName});
+
+  /**
+     * 简单分页查询
+     * @param page
+     * @param param
+     * @return
+     */
+  Page<${resultName}> listPage(Page<${resultName}> page, ${queryParamName} param);
+
+  /**
+     * 更新
+     * @param param
+     * @return
+     */
+  Boolean updateById(${paramName} param);
+
+  /**
+     * 新建
+     * @param param
+     * @return
+     */
+  Boolean save(${paramName} param);
+
+}

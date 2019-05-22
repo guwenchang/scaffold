@@ -1,0 +1,7 @@
+swagger:
+  doc:
+    resources:
+      log-api:
+        name: log-api
+        api-docs-path: /v2/api-docs
+        server-url: http://localhost:9009

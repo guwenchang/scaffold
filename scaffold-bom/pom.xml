@@ -32,7 +32,7 @@
         <hutool.version>4.4.5</hutool.version>
         <guava.version>20.0</guava.version>
         <fastjson.version>1.2.51</fastjson.version>
-
+        <orika-core.version>1.5.2</orika-core.version>
     </properties>
 
     <dependencyManagement>
@@ -78,6 +78,16 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
             <!--mysql 驱动-->
@@ -144,6 +154,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ma.glasnost.orika</groupId>
+                <artifactId>orika-core</artifactId>
+                <version>${orika-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

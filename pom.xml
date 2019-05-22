@@ -13,6 +13,7 @@
     <modules>
         <module>scaffold-bom</module>
         <module>scaffold-starter</module>
+        <module>scaffold-doc-center</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

@@ -1,7 +1,7 @@
 package com.smart.starter.lock.config;
 
-import com.smart.starter.lock.DefaultRedisKeyGenerator;
-import com.smart.starter.lock.RedisKeyGenerator;
+import com.smart.starter.DefaultRedisKeyGenerator;
+import com.smart.starter.RedisKeyGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

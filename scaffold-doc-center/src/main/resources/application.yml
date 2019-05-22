@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: doc-center
+  profiles:
+    active: dev
+
+swagger:
+  doc:
+    swagger-version: 2.0
+    api-docs-path: /v2/api-docs
+server:
+  port: 10000

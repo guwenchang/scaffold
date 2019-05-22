@@ -18,11 +18,11 @@ import com.smart.starter.core.model.PageParam;
 public class ${queryParamName} extends PageParam{
 
 #foreach ($column in $columns)
-  /**
-   * $column.comments
-   */
-  @ApiModelProperty("$column.comments")
-  private $column.attrType $column.lowerAttrName;
+    /**
+     * $column.comments
+     */
+    @ApiModelProperty("$column.comments")
+    private $column.attrType $column.lowerAttrName;
 #end
 
 }

@@ -61,7 +61,7 @@ public class OpLogAspect {
 			OpLogParam opLogParam = OpLogUtils.getopLog();
 			opLogParam.setApp(environment.getProperty("spring.application.name"));
 			opLogParam.setTitle(opLog.value());
-			opLogParam.setType(opLog.type());
+			opLogParam.setLogType(opLog.type());
 			opLogParam.setTime(endTime - startTime);
 			// 发送异步日志事件
 			publisher.publishEvent(new OpLogEvent(opLogParam));

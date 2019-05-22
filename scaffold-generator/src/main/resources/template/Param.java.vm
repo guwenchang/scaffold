@@ -17,14 +17,14 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Data
 public class ${paramName} implements Serializable{
-  private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
 #foreach ($column in $columns)
-  /**
-   * $column.comments
-   */
-  @ApiModelProperty("$column.comments")
-  private $column.attrType $column.lowerAttrName;
+    /**
+     * $column.comments
+     */
+    @ApiModelProperty("$column.comments")
+    private $column.attrType $column.lowerAttrName;
 #end
 
 }

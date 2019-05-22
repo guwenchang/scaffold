@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,12 +11,12 @@ import java.time.LocalDateTime;
  * 日志
  *
  * @author guwenchang
- * @date 2019-05-22 18:05:51
+ * @date 2019-05-22 19:17:59
  */
 @Data
 @TableName("t_op_log")
-public class OpLogEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class OpLogEntity implements Serializable{
+    private static final long serialVersionUID=1L;
 
     /**
      * 编号

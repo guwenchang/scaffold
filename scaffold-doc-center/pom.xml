@@ -29,6 +29,10 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>log-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

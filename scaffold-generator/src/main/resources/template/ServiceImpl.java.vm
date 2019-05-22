@@ -21,36 +21,33 @@ import org.springframework.stereotype.Service;
 @Service
 public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${entityName}> implements ${className}Service {
 
+    @Override
+    public ${resultName} get(${pk.attrType} ${pk.lowerAttrName}) {
+      ${entityName} entity = getById(${pk.lowerAttrName});
+      ${resultName} result = CopyUtils.copyObject(entity, ${resultName}.class);
+      return result;
+    }
 
-  @Override
-  public ${resultName} get(${pk.attrType} ${pk.lowerAttrName}) {
-    ${entityName} entity = getById(${pk.lowerAttrName});
-    ${resultName} result = CopyUtils.copyObject(entity, ${resultName}.class);
-    return result;
-  }
+    @Override
+    public Page<${resultName}> listPage(Page<${resultName}> page, ${queryParamName} param) {
+      QueryWrapper<${entityName}> wrapper = new QueryWrapper();
+      Page<${entityName}> entityPage = new Page<>();
+      CopyUtils.copyObject(page,entityPage);
+      page(entityPage, wrapper);
+      CopyUtils.copyObject(entityPage,page);
+      return page;
+    }
 
-  @Override
-  public Page<${resultName}> listPage(Page<${resultName}> page, ${queryParamName} param) {
-    QueryWrapper<${entityName}> wrapper = new QueryWrapper();
-    Page<${entityName}> entityPage = new Page<>();
-    CopyUtils.copyObject(page,entityPage);
-    page(entityPage, wrapper);
-    CopyUtils.copyObject(entityPage,page);
-    return page;
-  }
+    @Override
+    public Boolean updateById(${paramName} param) {
+      ${entityName} entity = CopyUtils.copyObject(param, ${entityName}.class);
+      return updateById(entity);
+    }
 
-  @Override
-  public Boolean updateById(${paramName} param) {
-    ${entityName} entity = CopyUtils.copyObject(param, ${entityName}.class);
-    return updateById(entity);
-  }
-
-  @Override
-  public Boolean save(${paramName} param) {
-    ${entityName} entity = CopyUtils.copyObject(param, ${entityName}.class);
-    return save(entity);
-  }
-
-
+    @Override
+    public Boolean save(${paramName} param) {
+      ${entityName} entity = CopyUtils.copyObject(param, ${entityName}.class);
+      return save(entity);
+    }
 
 }

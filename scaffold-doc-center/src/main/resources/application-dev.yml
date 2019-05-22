@@ -4,4 +4,4 @@ swagger:
       log-api:
         name: log-api
         api-docs-path: /v2/api-docs
-        server-url: http://localhost:9009
+        server-url: http://localhost:10010

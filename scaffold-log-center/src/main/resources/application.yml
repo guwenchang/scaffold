@@ -1,0 +1,68 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: @artifactId@
+  redis:
+    host: localhost
+    port: 6379
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/scaffold?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+mybatis-plus:
+  # MyBatis Mapper所对应的XML文件位置
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      field-strategy: not_null
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+#swagger公共信息
+swagger:
+  enabled: true
+  title: log api
+  description: log api
+  version: 1.0.0
+  base-package: com.smart.log.center.controller
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    email: 1379864599@qq.com
+    name: 顾小白
+    url: https://github.com/guwenchang/scaffold
+smart:
+  security:
+    ignore-urls:
+      - /swagger/**
+      - /log/**
+      - /v2/api-docs
+      - /swagger-resources
+      - /error
+    jwt:
+      # jwt sign算法
+      algorithm: hs512
+      # jwt secret
+      secret: http-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-me
+      # jwt 有效时间
+      expiration-in-second: 1209600
+
+logging:
+  level:
+    com.smart: debug

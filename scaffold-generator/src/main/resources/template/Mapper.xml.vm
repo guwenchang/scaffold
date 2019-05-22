@@ -4,9 +4,9 @@
 <mapper namespace="${package}.${moduleName}.mapper.${className}Mapper">
 
     <sql id="Base_Column_List">
-      #foreach ($column in $columns)
-          ${column.columnName},#
-      #end
+#foreach ($column in $columns)
+  ${column.columnName},##
+#end
     </sql>
 
 </mapper>

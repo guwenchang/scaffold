@@ -19,19 +19,19 @@ import java.time.LocalDateTime;
 @Data
 @TableName("${tableName}")
 public class ${entityName} implements Serializable{
-  private static final long serialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 
 #foreach ($column in $columns)
-  /**
-   * $column.comments
-   */
-  #if($column.idFlag && $column.idType == 1)
-  @TableId(type = IdType.AUTO)
-  #end
-  #if($column.idFlag && $column.idType == 2)
-  @TableId(type = IdType.INPUT)
-  #end
-  private $column.attrType $column.lowerAttrName;
+    /**
+     * $column.comments
+     */
+#if($column.idFlag && $column.idType == 1)
+    @TableId(type = IdType.AUTO)
+#end
+#if($column.idFlag && $column.idType == 2)
+    @TableId(type = IdType.INPUT)
+#end
+    private $column.attrType $column.lowerAttrName;
 #end
 
 }

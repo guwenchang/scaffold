@@ -4,6 +4,20 @@
 <mapper namespace="com.smart.admin.center.mapper.SysRoleMapper">
 
     <sql id="Base_Column_List">
-  id,  role_name,  role_code,  role_desc,  create_time,  update_time,  del_flag,    </sql>
+      id,  role_name,  role_code,  role_desc,  create_time,  update_time,  del_flag
+    </sql>
+
+
+    <!-- 通过用户ID，查询角色信息-->
+    <select id="listRolesByUserId" resultType="SysRoleEntity">
+        SELECT
+            r.*
+        FROM
+            t_sys_role r, t_sys_user_role ur
+        WHERE
+            r.role_id = ur.role_id
+        AND r.del_flag = 0
+        AND ur.user_id = #{userId}
+    </select>
 
 </mapper>

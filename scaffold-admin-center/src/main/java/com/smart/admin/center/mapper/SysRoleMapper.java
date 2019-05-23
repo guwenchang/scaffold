@@ -3,6 +3,8 @@ package com.smart.admin.center.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.smart.admin.center.entity.SysRoleEntity;
 
+import java.util.List;
+
 /**
  * 角色
  *
@@ -11,5 +13,13 @@ import com.smart.admin.center.entity.SysRoleEntity;
  */
 public interface SysRoleMapper extends BaseMapper<SysRoleEntity> {
 
+
+    /**
+     * 通过用户ID，查询角色信息
+     *
+     * @param userId
+     * @return
+     */
+    List<SysRoleEntity> listRolesByUserId(Long userId);
 
 }

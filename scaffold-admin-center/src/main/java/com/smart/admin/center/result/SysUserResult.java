@@ -7,40 +7,45 @@ import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * 部门结果集
+ * 系统用户结果集
  *
  * @author guwenchang
- * @date 2019-05-23 15:14:18
+ * @date 2019-05-23 16:59:41
  */
 @Data
-public class SysDeptResult implements Serializable{
+public class SysUserResult implements Serializable{
   private static final long serialVersionUID=1L;
 
     /**
-     * 部门id
+     * 用户ID
      */
-    @ApiModelProperty("部门id")
+    @ApiModelProperty("用户ID")
     private Long id;
     /**
-     * 部门编码
+     * 用户名
      */
-    @ApiModelProperty("部门编码")
-    private String code;
+    @ApiModelProperty("用户名")
+    private String username;
     /**
-     * 父部门编码
+     * 真实姓名
      */
-    @ApiModelProperty("父部门编码")
-    private String parentCode;
+    @ApiModelProperty("真实姓名")
+    private String realName;
     /**
-     * 部门名称
+     * 手机号
      */
-    @ApiModelProperty("部门名称")
-    private String name;
+    @ApiModelProperty("手机号")
+    private String mobile;
     /**
-     * 排序
+     * 头像
      */
-    @ApiModelProperty("排序")
-    private Integer orderNum;
+    @ApiModelProperty("头像")
+    private String avatar;
+    /**
+     * 部门ID
+     */
+    @ApiModelProperty("部门ID")
+    private Long deptId;
     /**
      * 创建时间
      */

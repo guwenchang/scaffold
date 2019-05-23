@@ -30,7 +30,7 @@ public interface OpLogService extends IService<OpLogEntity> {
      * @param param
      * @return
      */
-    Page<OpLogResult> listPage(Page<OpLogResult> page, OpLogQueryParam param);
+    Page<OpLogResult> page(Page<OpLogResult> page, OpLogQueryParam param);
 
     /**
      * 新建

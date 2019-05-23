@@ -1,5 +1,6 @@
 package com.smart.starter.core.util;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -32,5 +33,15 @@ public class CopyUtils {
 
     public static <S, D> List<D> copyList(Iterable<S> source, Class<D> destinationClass) {
         return MAPPERFACADE.mapAsList(source, destinationClass);
+    }
+
+    public static <S, D> Page<D> copyPage(Page<S> source, Class<D> destinationClass) {
+        Page<D> page = new Page<>();
+        page.setCurrent(source.getCurrent());
+        page.setTotal(source.getTotal());
+        page.setPages(source.getPages());
+        page.setSize(source.getSize());
+        page.setRecords(MAPPERFACADE.mapAsList(source.getRecords(), destinationClass));
+        return page;
     }
 }

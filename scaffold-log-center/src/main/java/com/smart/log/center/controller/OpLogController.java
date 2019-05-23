@@ -36,8 +36,7 @@ public class OpLogController extends BaseController  {
     @GetMapping("/page")
     public ApiResult<Page<OpLogResult>> page(OpLogQueryParam param) {
       Page<OpLogResult> page = getPage(param);
-      opLogService.listPage(page,param);
-      return ApiResult.success(page);
+      return ApiResult.success(opLogService.page(page, param));
     }
 
 

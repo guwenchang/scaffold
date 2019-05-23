@@ -16,16 +16,6 @@ import javax.servlet.http.HttpSession;
 **/
 @Slf4j
 public class BaseController {
-
-	@Autowired
-	protected HttpServletRequest request;
-
-	@Autowired
-	protected HttpServletResponse response;
-
-	@Autowired
-	protected HttpSession session;
-
 	protected <T> Page<T> getPage(PageParam pageParam) {
 		Page<T> page = new Page<T>(pageParam.getPageNo(), pageParam.getPageSize());
 		if (page.getSize() > PageParam.MAX_PAGE_SIZE){

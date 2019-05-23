@@ -25,7 +25,7 @@ public class OpLogResult implements Serializable{
      * 日志类型
      */
     @ApiModelProperty("日志类型")
-    private Integer logType;
+    private String logType;
     /**
      * 日志标题
      */

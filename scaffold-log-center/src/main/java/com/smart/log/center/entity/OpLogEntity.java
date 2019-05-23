@@ -26,7 +26,7 @@ public class OpLogEntity implements Serializable{
     /**
      * 日志类型
      */
-    private Integer logType;
+    private String logType;
     /**
      * 日志标题
      */

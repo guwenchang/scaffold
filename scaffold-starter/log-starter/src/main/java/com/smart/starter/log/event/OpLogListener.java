@@ -27,6 +27,5 @@ public class OpLogListener {
 	public void saveSysLog(OpLogEvent event) {
 		OpLogParam opLogParam = event.getOpLogParam();
 		this.rabbitTemplate.convertAndSend(ConstantsLog.OP_LOG_QUEUE, opLogParam);
-		System.out.println(opLogParam);
 	}
 }

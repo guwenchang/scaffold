@@ -18,7 +18,7 @@ public class OpLogQueryParam extends PageParam{
      * 日志类型
      */
     @ApiModelProperty("日志类型")
-    private Integer logType;
+    private String logType;
     /**
      * 服务名
      */

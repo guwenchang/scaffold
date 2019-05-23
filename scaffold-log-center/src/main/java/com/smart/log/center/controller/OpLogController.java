@@ -34,7 +34,7 @@ public class OpLogController extends BaseController  {
     @ApiOperation("分页查询")
     @OpLog("日志查询")
     @GetMapping("/page")
-    public ApiResult<Page<OpLogResult>> page(@RequestBody OpLogQueryParam param) {
+    public ApiResult<Page<OpLogResult>> page(OpLogQueryParam param) {
       Page<OpLogResult> page = getPage(param);
       opLogService.listPage(page,param);
       return ApiResult.success(page);
@@ -48,6 +48,7 @@ public class OpLogController extends BaseController  {
      */
     @ApiOperation("根据ID查询")
     @GetMapping("/{id}")
+    @OpLog("日志查询")
     public ApiResult<OpLogResult> get(@PathVariable("id") Long id){
       return ApiResult.success(opLogService.get(id));
     }

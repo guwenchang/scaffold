@@ -1,8 +1,10 @@
 package com.smart.log.center.event;
 
 import com.rabbitmq.client.Channel;
+import com.smart.log.center.service.OpLogService;
 import com.smart.starter.log.ConstantsLog;
 import com.smart.starter.log.OpLogParam;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -16,13 +18,17 @@ import java.io.IOException;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class OpLogHandler {
+
+    private final OpLogService opLogService;
 
     @RabbitListener(queues = {ConstantsLog.OP_LOG_QUEUE})
     public void listenerAutoAck(OpLogParam opLogParam, Message message, Channel channel) {
         final long deliveryTag = message.getMessageProperties().getDeliveryTag();
         try {
             log.debug("[listenerAutoAck 监听的消息] - [{}]", opLogParam.toString());
+            opLogService.save(opLogParam);
             channel.basicAck(deliveryTag, false);
         } catch (IOException e) {
             try {

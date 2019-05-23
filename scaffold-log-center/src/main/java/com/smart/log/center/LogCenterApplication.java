@@ -15,10 +15,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableOpLog
 @EnableSwagger2Doc
 @SpringBootApplication
-public class ScaffoldLogCenterApplication {
+public class LogCenterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ScaffoldLogCenterApplication.class, args);
+        SpringApplication.run(LogCenterApplication.class, args);
     }
 
 }

@@ -39,7 +39,7 @@ public class GeneratorMain {
 		GeneratorParam param = new GeneratorParam();
 		param.setOutPath("/Users/guwenchang/code/codetmp/scaffold/");
 		param.setAuthor("guwenchang");
-		param.setPackageName("com.smart.log");
+		param.setPackageName("com.smart.admin");
 		param.setTablePrefix("t_");
 		param.setModuleName("center");
 		param.setIncludeTables(new String[]{});

@@ -30,7 +30,7 @@ public interface ${className}Service extends IService<${entityName}> {
      * @param param
      * @return
      */
-    Page<${resultName}> listPage(Page<${resultName}> page, ${queryParamName} param);
+    Page<${resultName}> page(Page<${resultName}> page, ${queryParamName} param);
 
     /**
      * 更新

@@ -1,0 +1,35 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/scaffold?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+#swagger公共信息
+swagger:
+  enabled: true
+  title: log api
+  description: log api
+  version: 1.0.0
+  base-package: com.smart.log.center.controller
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    email: 1379864599@qq.com
+    name: 顾小白
+    url: https://github.com/guwenchang/scaffold
+logging:
+  level:
+    com.smart: debug

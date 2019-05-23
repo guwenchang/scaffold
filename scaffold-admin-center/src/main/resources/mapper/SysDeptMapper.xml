@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smart.admin.center.mapper.SysDeptMapper">
+
+    <sql id="Base_Column_List">
+      id,  dept_code,  parent_code,  name,  create_time,  order_num,  update_time,  del_flag
+    </sql>
+
+</mapper>

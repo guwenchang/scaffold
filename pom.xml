@@ -12,6 +12,7 @@
 
     <modules>
         <module>scaffold-bom</module>
+        <module>scaffold-generator</module>
         <module>scaffold-starter</module>
         <module>scaffold-doc-center</module>
         <module>scaffold-log-center</module>

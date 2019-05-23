@@ -4,12 +4,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.smart.log.center.param.OpLogQueryParam;
 import com.smart.log.center.result.OpLogResult;
 import com.smart.log.center.service.OpLogService;
-import com.smart.starter.log.annotation.OpLog;
+import com.smart.starter.core.model.ApiResult;
+import com.smart.starter.core.model.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import com.smart.starter.core.model.*;
 
 
 /**
@@ -32,7 +32,6 @@ public class OpLogController extends BaseController  {
      * @return
      */
     @ApiOperation("分页查询")
-    @OpLog("日志查询")
     @GetMapping("/page")
     public ApiResult<Page<OpLogResult>> page(OpLogQueryParam param) {
       Page<OpLogResult> page = getPage(param);
@@ -47,7 +46,6 @@ public class OpLogController extends BaseController  {
      */
     @ApiOperation("根据ID查询")
     @GetMapping("/{id}")
-    @OpLog("日志查询")
     public ApiResult<OpLogResult> get(@PathVariable("id") Long id){
       return ApiResult.success(opLogService.get(id));
     }

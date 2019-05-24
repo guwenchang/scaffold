@@ -151,7 +151,7 @@ public class SwaggerProperties {
         /**
          * 鉴权传递的Header参数
          */
-        private String keyName = "TOKEN";
+        private String keyName = "auth_token";
 
         /**
          * 需要开启鉴权URL的正则

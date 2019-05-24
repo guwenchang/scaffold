@@ -7,10 +7,6 @@ package com.smart.starter.security.constants;
  */
 public interface ConstantsSecurity {
     /**
-     * 请求头
-     */
-    String AUTHORIZATION_HEADER = "Authorization";
-    /**
      * token 在cookie中的值
      */
     String TOKEN_COOKIE_KEY = "auth_token";
@@ -20,7 +16,7 @@ public interface ConstantsSecurity {
     String TOKEN_PARAM_KEY = "auth_token";
 
     /**
-     * Bearer header
+     * token header
      */
-    String BEARER = "Bearer ";
+    String TOKEN_HEADER_KEY = "auth_token";
 }

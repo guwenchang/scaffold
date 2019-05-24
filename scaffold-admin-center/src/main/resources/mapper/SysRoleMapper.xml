@@ -15,7 +15,7 @@
         FROM
             t_sys_role r, t_sys_user_role ur
         WHERE
-            r.role_id = ur.role_id
+            r.id = ur.role_id
         AND r.del_flag = 0
         AND ur.user_id = #{userId}
     </select>

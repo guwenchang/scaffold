@@ -25,7 +25,6 @@ import java.util.List;
 @AllArgsConstructor
 public class UserOperator {
     private static final String SMART_SECURITY_REQ_ATTR_USER = "smart-security-user";
-    private static final int SEVEN = 7;
 
     private final JwtOperator jwtOperator;
 
@@ -63,7 +62,7 @@ public class UserOperator {
         Object username = claims.get(JwtOperator.USERNAME);
 
         return User.builder()
-                .userId((Integer) userId)
+                .userId(((Integer) userId).longValue())
                 .username((String) username)
                 .perms((List<String>) perms)
                 .build();
@@ -85,17 +84,11 @@ public class UserOperator {
             }
         }
         //如果cookie中没有，则从header中取
-        String header = request.getHeader(ConstantsSecurity.AUTHORIZATION_HEADER);
+        String header = request.getHeader(ConstantsSecurity.TOKEN_HEADER_KEY);
         if (StringUtils.isEmpty(header)) {
             return null;
         }
-        if (!header.startsWith(ConstantsSecurity.BEARER)) {
-            throw new SmartSecurityException("token should start with 'Bearer ' ");
-        }
-        if (header.length() <= SEVEN) {
-            throw new SmartSecurityException("Token Invalided，length <= 7");
-        }
-        return header.substring(SEVEN);
+        return header;
     }
 
 

@@ -8,6 +8,7 @@ spring:
 mybatis-plus:
   # MyBatis Mapper所对应的XML文件位置
   mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.smart.admin.center.entity
   configuration:
     map-underscore-to-camel-case: true
   global-config:
@@ -22,7 +23,6 @@ smart:
   security:
     ignore-urls:
       - /swagger/**
-      - /log/**
       - /v2/api-docs
       - /swagger-resources
       - /error

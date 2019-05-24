@@ -6,7 +6,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.smart.admin.center.entity.SysUserEntity;
 import com.smart.admin.center.param.SysUserParam;
 import com.smart.admin.center.param.SysUserQueryParam;
+import com.smart.admin.center.result.SysMenuResult;
 import com.smart.admin.center.result.SysUserResult;
+
+import java.util.List;
 
 /**
  * 系统用户
@@ -45,5 +48,14 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @return
      */
     Boolean save(SysUserParam param);
+
+
+
+    /**
+     * 根据用户ID获取用户权限
+     * @param userId
+     * @return
+     */
+    List<SysMenuResult> listMenusByUserId(Long userId);
 
 }

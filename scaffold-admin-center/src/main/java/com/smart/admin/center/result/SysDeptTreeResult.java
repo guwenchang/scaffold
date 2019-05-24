@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
  * @date 2019-05-23
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 public class SysDeptTreeResult extends TreeNode {
 
     /**

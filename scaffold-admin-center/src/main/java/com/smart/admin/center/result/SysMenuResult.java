@@ -14,7 +14,6 @@ import java.io.Serializable;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="菜单权限结果集", description="菜单权限")
 public class SysMenuResult implements Serializable {
 
     private static final long serialVersionUID = 1L;

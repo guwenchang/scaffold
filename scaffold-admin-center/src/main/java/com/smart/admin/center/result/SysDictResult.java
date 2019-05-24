@@ -14,7 +14,6 @@ import java.io.Serializable;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="字典结果集", description="字典")
 public class SysDictResult implements Serializable {
 
     private static final long serialVersionUID = 1L;

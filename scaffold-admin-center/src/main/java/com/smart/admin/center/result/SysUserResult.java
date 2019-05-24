@@ -14,7 +14,6 @@ import java.io.Serializable;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="系统用户结果集", description="系统用户")
 public class SysUserResult implements Serializable {
 
     private static final long serialVersionUID = 1L;

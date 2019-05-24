@@ -3,7 +3,7 @@ package com.smart.log.center.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.smart.log.center.param.OpLogQueryParam;
 import com.smart.log.center.result.OpLogResult;
-import com.smart.log.center.service.OpLogService;
+import com.smart.log.center.service.IOpLogService;
 import com.smart.starter.core.model.ApiResult;
 import com.smart.starter.core.model.BaseController;
 import io.swagger.annotations.Api;
@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.*;
  * @author guwenchang
  * @date 2019-05-22 19:17:59
  */
-@Api("日志api")
+@Api(tags = "日志相关接口")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/log")
 public class OpLogController extends BaseController  {
 
-    private final  OpLogService opLogService;
+    private final IOpLogService opLogService;
 
     /**
      * 简单分页查询
@@ -58,7 +58,7 @@ public class OpLogController extends BaseController  {
     @ApiOperation("根据ID删除")
     @DeleteMapping("/{id}")
     public ApiResult removeById(@PathVariable Long id){
-      return ApiResult.success(opLogService.removeById(id));
+      return ApiResult.success(opLogService.delete(id));
     }
 
 }

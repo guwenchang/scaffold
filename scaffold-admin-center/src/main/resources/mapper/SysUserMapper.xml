@@ -3,7 +3,10 @@
 
 <mapper namespace="com.smart.admin.center.mapper.SysUserMapper">
 
+    <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-  id,  username,  real_name,  password,  mobile,  avatar,  dept_id,  create_time,  update_time,  del_flag,    </sql>
+        id, username, real_name, password, mobile, avatar, dept_id, create_time, update_time, del_flag
+    </sql>
+
 
 </mapper>

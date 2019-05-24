@@ -3,8 +3,9 @@
 
 <mapper namespace="com.smart.admin.center.mapper.SysRoleMapper">
 
+    <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-      id,  role_name,  role_code,  role_desc,  create_time,  update_time,  del_flag
+        id, role_name, role_code, role_desc, create_time, update_time, del_flag
     </sql>
 
 

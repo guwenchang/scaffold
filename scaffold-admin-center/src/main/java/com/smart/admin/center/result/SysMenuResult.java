@@ -1,80 +1,82 @@
 package com.smart.admin.center.result;
 
+import java.time.LocalDateTime;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModelProperty;
-
 /**
- * 菜单权限结果集
  *
- * @author guwenchang
- * @date 2019-05-23 16:59:41
+ * 菜单权限 结果集
+ *
+ * @author guxiaobai
+ * @date 2019-05-24
  */
 @Data
-public class SysMenuResult implements Serializable{
-  private static final long serialVersionUID=1L;
+@ApiModel(value="菜单权限结果集", description="菜单权限")
+public class SysMenuResult implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     /**
      * 菜单ID
      */
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty(value = "菜单ID")
     private Long id;
     /**
-     * 
+     * 菜单编码
      */
-    @ApiModelProperty("")
+    @ApiModelProperty(value = "菜单编码")
     private String code;
     /**
      * 菜单名称
      */
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty(value = "菜单名称")
     private String name;
     /**
      * 菜单权限标识
      */
-    @ApiModelProperty("菜单权限标识")
+    @ApiModelProperty(value = "菜单权限标识")
     private String permission;
     /**
      * 前端URL
      */
-    @ApiModelProperty("前端URL")
+    @ApiModelProperty(value = "前端URL")
     private String path;
     /**
      * 父菜单ID
      */
-    @ApiModelProperty("父菜单ID")
+    @ApiModelProperty(value = "父菜单ID")
     private String parentCode;
     /**
      * 图标
      */
-    @ApiModelProperty("图标")
+    @ApiModelProperty(value = "图标")
     private String icon;
     /**
      * 页面名称
      */
-    @ApiModelProperty("页面名称")
+    @ApiModelProperty(value = "页面名称")
     private String component;
     /**
      * 排序值
      */
-    @ApiModelProperty("排序值")
+    @ApiModelProperty(value = "排序值")
     private Integer sort;
     /**
      * 菜单类型 1 菜单，2 功能
      */
-    @ApiModelProperty("菜单类型 1 菜单，2 功能")
+    @ApiModelProperty(value = "菜单类型 1 菜单，2 功能")
     private Integer type;
     /**
      * 创建时间
      */
-    @ApiModelProperty("创建时间")
+    @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
     /**
      * 更新时间
      */
-    @ApiModelProperty("更新时间")
+    @ApiModelProperty(value = "更新时间")
     private LocalDateTime updateTime;
 
 }

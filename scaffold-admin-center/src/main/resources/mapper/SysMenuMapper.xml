@@ -3,8 +3,9 @@
 
 <mapper namespace="com.smart.admin.center.mapper.SysMenuMapper">
 
-    <sql id="Base_Column_List">
-      id,  code,  name,  permission,  path,  parent_code,  icon,  component,  sort,  type,  create_time,  update_time,  del_flag
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+        id, code, name, permission, path, parent_code, icon, component, sort, type, create_time, update_time, del_flag
     </sql>
 
     <!--通过角色查询菜单信息-->

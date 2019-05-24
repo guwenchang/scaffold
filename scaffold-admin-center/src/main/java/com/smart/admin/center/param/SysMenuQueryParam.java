@@ -1,42 +1,37 @@
 package com.smart.admin.center.param;
 
-
-import lombok.Data;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModelProperty;
 import com.smart.starter.core.model.PageParam;
+
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
- * 菜单权限查询参数
  *
- * @author guwenchang
- * @date 2019-05-23 16:59:41
+ * 菜单权限 查询参数
+ *
+ * @author guxiaobai
+ * @date 2019-05-24
  */
 @Data
-public class SysMenuQueryParam extends PageParam{
+@ApiModel(value="菜单权限查询参数", description="菜单权限")
+public class SysMenuQueryParam extends PageParam {
 
     /**
-     * 
+     * 菜单编码
      */
-    @ApiModelProperty("菜单编码")
+    @ApiModelProperty(value = "菜单编码")
     private String code;
     /**
      * 菜单名称
      */
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty(value = "菜单名称")
     private String name;
     /**
-     * 菜单权限标识
+     * 父菜单ID
      */
-    @ApiModelProperty("菜单权限标识")
-    private String permission;
-    /**
-     * 前端URL
-     */
-    @ApiModelProperty("前端URL")
-    private String path;
-    /**
-     * 菜单类型 1 菜单，2 功能
-     */
-    @ApiModelProperty("菜单类型 1 菜单，2 功能")
-    private Integer type;
+    @ApiModelProperty(value = "父菜单ID")
+    private String parentCode;
 }

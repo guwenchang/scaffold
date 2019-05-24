@@ -2,6 +2,7 @@ package com.smart.starter.log.aspect;
 
 import com.alibaba.fastjson.JSON;
 
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.smart.starter.log.OpLogParam;
 import com.smart.starter.log.annotation.OpLog;
 import com.smart.starter.log.event.OpLogEvent;
@@ -19,6 +20,7 @@ import org.springframework.core.env.Environment;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * 日志切面
@@ -54,14 +56,15 @@ public class OpLogAspect {
 		Long startTime = System.currentTimeMillis();
 		Object obj = point.proceed();
 		Long endTime = System.currentTimeMillis();
-		log.debug("response : {}", JSON.toJSONString(obj));
+		log.debug("response : {}", JSON.toJSONString(obj, SerializerFeature.WriteMapNullValue));
 		log.debug("spendTime : {}", (endTime - startTime));
 		OpLog opLog = targetMethod.getAnnotation(OpLog.class);
 		if (opLog != null){
-			OpLogParam opLogParam = OpLogUtils.getopLog();
+			OpLogParam opLogParam = OpLogUtils.getOpLog();
 			opLogParam.setApp(environment.getProperty("spring.application.name"));
 			opLogParam.setTitle(opLog.value());
 			opLogParam.setLogType(opLog.type());
+			opLogParam.setParams(JSON.toJSONString(point.getArgs()));
 			opLogParam.setTime(endTime - startTime);
 			// 发送异步日志事件
 			publisher.publishEvent(new OpLogEvent(opLogParam));

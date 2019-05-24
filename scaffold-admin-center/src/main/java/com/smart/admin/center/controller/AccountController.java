@@ -7,7 +7,7 @@ import com.google.common.collect.Maps;
 import com.smart.admin.center.entity.SysUserEntity;
 import com.smart.admin.center.param.LoginForm;
 import com.smart.admin.center.result.SysMenuResult;
-import com.smart.admin.center.service.SysUserService;
+import com.smart.admin.center.service.ISysUserService;
 import com.smart.starter.core.model.ApiResult;
 import com.smart.starter.core.model.BaseController;
 import com.smart.starter.log.annotation.OpLog;
@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AccountController extends BaseController {
 
-    private final SysUserService sysUserService;
+    private final ISysUserService sysUserService;
     private final PasswordEncoder passwordEncoder;
     private final JwtOperator jwtOperator;
 
@@ -52,8 +52,7 @@ public class AccountController extends BaseController {
     @OpLog("用户登录")
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ApiResult login(@Valid @RequestBody LoginForm loginForm) {
-        SysUserEntity sysUserEntity = sysUserService.getOne(new QueryWrapper<SysUserEntity>().lambda()
-                .eq(SysUserEntity::getUsername, loginForm.getUsername()));
+        SysUserEntity sysUserEntity = sysUserService.getOneByUserName(loginForm.getUsername());
         //账号不存在、密码错误
         if (sysUserEntity == null || !passwordEncoder.matches(loginForm.getPassword(), sysUserEntity.getPassword())) {
             return ApiResult.error("账号或密码错误");

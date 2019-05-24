@@ -23,7 +23,7 @@ import java.util.Objects;
 @UtilityClass
 public class OpLogUtils {
 
-    public OpLogParam getopLog() {
+    public OpLogParam getOpLog() {
         HttpServletRequest request = ((ServletRequestAttributes) Objects
                 .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         OpLogParam opLogParam = new OpLogParam();
@@ -32,7 +32,6 @@ public class OpLogUtils {
         opLogParam.setRequestUri(URLUtil.getPath(request.getRequestURI()));
         opLogParam.setMethod(request.getMethod());
         opLogParam.setUserAgent(request.getHeader("user-agent"));
-        opLogParam.setParams(HttpUtil.toParams(request.getParameterMap()));
         return opLogParam;
     }
 

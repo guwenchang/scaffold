@@ -1,7 +1,7 @@
 package com.smart.log.center.event;
 
 import com.rabbitmq.client.Channel;
-import com.smart.log.center.service.OpLogService;
+import com.smart.log.center.service.IOpLogService;
 import com.smart.starter.log.ConstantsLog;
 import com.smart.starter.log.OpLogParam;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class OpLogHandler {
 
-    private final OpLogService opLogService;
+    private final IOpLogService opLogService;
 
     @RabbitListener(queues = {ConstantsLog.OP_LOG_QUEUE})
     public void listenerAutoAck(OpLogParam opLogParam, Message message, Channel channel) {

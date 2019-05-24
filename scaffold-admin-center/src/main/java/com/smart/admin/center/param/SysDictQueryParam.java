@@ -1,27 +1,39 @@
 package com.smart.admin.center.param;
 
-
-import lombok.Data;
 import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModelProperty;
 import com.smart.starter.core.model.PageParam;
+
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
- * 字典查询参数
  *
- * @author guwenchang
- * @date 2019-05-23 16:59:41
+ * 字典 查询参数
+ *
+ * @author guxiaobai
+ * @date 2019-05-24
  */
 @Data
-public class SysDictQueryParam extends PageParam{
+@ApiModel(value="字典查询参数", description="字典")
+public class SysDictQueryParam extends PageParam {
+
     /**
      * 标签名
      */
-    @ApiModelProperty("标签名")
+    @ApiModelProperty(value = "标签名")
     private String label;
     /**
      * 类型
      */
-    @ApiModelProperty("类型")
+    @ApiModelProperty(value = "类型")
     private String type;
+    /**
+     * 字典状态 1 启用，2 禁用
+     */
+    @ApiModelProperty(value = "字典状态 1 启用，2 禁用")
+    private Integer status;
+
 
 }

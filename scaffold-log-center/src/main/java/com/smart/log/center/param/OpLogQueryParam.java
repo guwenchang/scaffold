@@ -13,7 +13,6 @@ import lombok.Data;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="日志查询参数", description="日志")
 public class OpLogQueryParam extends PageParam {
 
     /**

@@ -14,7 +14,6 @@ import java.io.Serializable;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="日志结果集", description="日志")
 public class OpLogResult implements Serializable {
 
     private static final long serialVersionUID = 1L;

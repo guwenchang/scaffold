@@ -1,12 +1,8 @@
 package com.smart.admin.center.param;
 
-import java.time.LocalDateTime;
 import com.smart.starter.core.model.PageParam;
-
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -16,7 +12,6 @@ import lombok.EqualsAndHashCode;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="字典查询参数", description="字典")
 public class SysDictQueryParam extends PageParam {
 
     /**

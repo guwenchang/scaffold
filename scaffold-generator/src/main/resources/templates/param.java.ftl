@@ -3,7 +3,6 @@ package ${cfg.ParamPackage};
 import java.time.LocalDateTime;
 
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import java.io.Serializable;
 /**
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @date ${date}
  */
 @Data
-@ApiModel(value="${table.comment!}参数", description="${table.comment!}")
 public class ${entity}Param implements Serializable {
 
     private static final long serialVersionUID = 1L;

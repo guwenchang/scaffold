@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import com.smart.starter.core.model.PageParam;
 
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,7 +15,6 @@ import lombok.EqualsAndHashCode;
  * @date ${date}
  */
 @Data
-@ApiModel(value="${table.comment!}查询参数", description="${table.comment!}")
 public class ${entity}QueryParam extends PageParam {
 
 <#-- ----------  BEGIN 字段循环遍历  ---------->

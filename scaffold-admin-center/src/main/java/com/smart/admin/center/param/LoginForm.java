@@ -1,6 +1,5 @@
 package com.smart.admin.center.param;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotBlank;
  * @since 2018-01-23
  */
 @Data
-@ApiModel("登录表单")
 public class LoginForm {
 
 

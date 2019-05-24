@@ -1,10 +1,8 @@
 package com.smart.admin.center.param;
 
-import java.time.LocalDateTime;
-
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
+
 import java.io.Serializable;
 /**
  * 角色参数
@@ -13,7 +11,6 @@ import java.io.Serializable;
  * @date 2019-05-24
  */
 @Data
-@ApiModel(value="角色参数", description="角色")
 public class SysRoleParam implements Serializable {
 
     private static final long serialVersionUID = 1L;

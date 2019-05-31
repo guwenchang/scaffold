@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  *
  * 系统用户 结果集
@@ -33,11 +35,6 @@ public class SysUserResult implements Serializable {
     @ApiModelProperty(value = "真实姓名")
     private String realName;
     /**
-     * 密码
-     */
-    @ApiModelProperty(value = "密码")
-    private String password;
-    /**
      * 手机号
      */
     @ApiModelProperty(value = "手机号")
@@ -62,5 +59,11 @@ public class SysUserResult implements Serializable {
      */
     @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
+
+    /**
+     * 角色集合
+     */
+    @ApiModelProperty(value = "角色集合")
+    private List<SysRoleResult> roles;
 
 }

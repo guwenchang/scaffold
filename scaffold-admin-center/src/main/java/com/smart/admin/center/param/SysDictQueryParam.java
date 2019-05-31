@@ -2,6 +2,7 @@ package com.smart.admin.center.param;
 
 import com.smart.starter.core.model.PageParam;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 
 /**

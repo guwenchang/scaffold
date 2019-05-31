@@ -2,6 +2,7 @@ package ${package.ServiceImpl};
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.smart.starter.core.util.CopyUtils;
+import com.smart.starter.core.util.PageUtils;
 import ${package.Entity}.${entity}Entity;
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
@@ -61,19 +62,15 @@ public class ${table.serviceImplName} implements ${table.serviceName} {
 
     @Override
     public List<${entity}Result> list(${entity}QueryParam param) {
-        QueryWrapper<${entity}Entity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<${entity}Entity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,${entity}Entity.class));
         List<${entity}Entity> entityList = mapper.selectList(queryWrapper);
         return CopyUtils.copyList(entityList, ${entity}Result.class);
     }
 
     @Override
     public Page<${entity}Result> page(Page<${entity}Result> page, ${entity}QueryParam param) {
-        QueryWrapper<${entity}Entity> queryWrapper = new QueryWrapper<>();
-        Page<${entity}Entity> entityPage = new Page<>();
-        entityPage.setSize(page.getSize());
-        entityPage.setCurrent(page.getCurrent());
-        entityPage.setAsc(page.ascs());
-        entityPage.setDesc(page.descs());
+        QueryWrapper<${entity}Entity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,${entity}Entity.class));
+        Page<${entity}Entity> entityPage = PageUtils.buildPage(page, ${entity}Entity.class);
         mapper.selectPage(entityPage, queryWrapper);
         Page<${entity}Result> resultPage = CopyUtils.copyPage(entityPage, ${entity}Result.class);
         return resultPage;

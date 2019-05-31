@@ -1,3 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.smart.starter.core.exception.GlobalExceptionHandler,\
-  com.smart.starter.core.jackson.JacksonConfig
+  com.smart.starter.core.config.JacksonConfig,\
+  com.smart.starter.core.config.RedisConfig,\
+  com.smart.starter.core.config.RestTemplateConfig

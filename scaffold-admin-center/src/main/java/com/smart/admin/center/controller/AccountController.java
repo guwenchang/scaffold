@@ -31,12 +31,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 账户相关接口
+ * 账户管理
  *
  * @author guwenchang
  * @date 2019-05-23
  */
-@Api(tags = "账户相关接口")
+@Api(tags = "账户管理")
 @RestController
 @RequestMapping("auth")
 @RequiredArgsConstructor

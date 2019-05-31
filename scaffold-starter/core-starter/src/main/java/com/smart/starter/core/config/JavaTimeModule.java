@@ -1,4 +1,4 @@
-package com.smart.starter.core.jackson;
+package com.smart.starter.core.config;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.module.SimpleModule;

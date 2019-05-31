@@ -1,6 +1,7 @@
 package com.smart.admin.center.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.smart.admin.center.param.SysRoleMenuUpdateParam;
 import com.smart.admin.center.param.SysRoleParam;
 import com.smart.admin.center.param.SysRoleQueryParam;
 import com.smart.admin.center.result.SysRoleResult;
@@ -65,4 +66,10 @@ public interface ISysRoleService {
      */
     Page<SysRoleResult> page(Page<SysRoleResult> page, SysRoleQueryParam param);
 
+    /**
+     * 更新角色信息
+     * @param param
+     * @return
+     */
+    Boolean updateMenu(SysRoleMenuUpdateParam param);
 }

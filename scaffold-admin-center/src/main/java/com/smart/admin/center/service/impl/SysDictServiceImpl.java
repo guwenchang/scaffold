@@ -5,6 +5,9 @@ import com.smart.starter.core.util.CopyUtils;
 import com.smart.admin.center.entity.SysDictEntity;
 import com.smart.admin.center.mapper.SysDictMapper;
 import com.smart.admin.center.service.ISysDictService;
+import com.smart.starter.core.util.PageUtils;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.smart.admin.center.param.SysDictParam;
@@ -25,9 +28,11 @@ import lombok.RequiredArgsConstructor;
 public class SysDictServiceImpl implements ISysDictService {
 
     private final SysDictMapper mapper;
+    public static final String DICT_DETAILS = "dict_details";
 
 
     @Override
+    @CacheEvict(value = DICT_DETAILS, key = "#param.type")
     public Boolean save(SysDictParam param) {
         SysDictEntity entity = CopyUtils.copyObject(param, SysDictEntity.class);
         int insert = mapper.insert(entity);
@@ -35,6 +40,7 @@ public class SysDictServiceImpl implements ISysDictService {
     }
 
     @Override
+    @CacheEvict(value = DICT_DETAILS, key = "#param.type")
     public Boolean update(SysDictParam param) {
         SysDictEntity entity = CopyUtils.copyObject(param, SysDictEntity.class);
         int update = mapper.updateById(entity);
@@ -55,20 +61,18 @@ public class SysDictServiceImpl implements ISysDictService {
     }
 
     @Override
+    @Cacheable(value = DICT_DETAILS, key = "#param.type")
     public List<SysDictResult> list(SysDictQueryParam param) {
-        QueryWrapper<SysDictEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysDictEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysDictEntity.class));
+        queryWrapper.lambda().orderByAsc(SysDictEntity::getSort);
         List<SysDictEntity> entityList = mapper.selectList(queryWrapper);
         return CopyUtils.copyList(entityList, SysDictResult.class);
     }
 
     @Override
     public Page<SysDictResult> page(Page<SysDictResult> page, SysDictQueryParam param) {
-        QueryWrapper<SysDictEntity> queryWrapper = new QueryWrapper<>();
-        Page<SysDictEntity> entityPage = new Page<>();
-        entityPage.setSize(page.getSize());
-        entityPage.setCurrent(page.getCurrent());
-        entityPage.setAsc(page.ascs());
-        entityPage.setDesc(page.descs());
+        QueryWrapper<SysDictEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysDictEntity.class));
+        Page<SysDictEntity> entityPage = PageUtils.buildPage(page, SysDictEntity.class);
         mapper.selectPage(entityPage, queryWrapper);
         Page<SysDictResult> resultPage = CopyUtils.copyPage(entityPage, SysDictResult.class);
         return resultPage;

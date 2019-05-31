@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * 系统用户参数
  *
@@ -49,5 +51,11 @@ public class SysUserParam implements Serializable {
      */
     @ApiModelProperty(value = "部门ID")
     private Long deptId;
+
+    /**
+     * 角色ID集合
+     */
+    @ApiModelProperty(value = "角色ID集合")
+    private List<Long> roleIds;
 
 }

@@ -1,11 +1,13 @@
 package com.smart.admin.center.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.smart.admin.center.entity.SysDictEntity;
 import com.smart.admin.center.result.SysDeptTreeResult;
 import com.smart.starter.core.util.CopyUtils;
 import com.smart.admin.center.entity.SysDeptEntity;
 import com.smart.admin.center.mapper.SysDeptMapper;
 import com.smart.admin.center.service.ISysDeptService;
+import com.smart.starter.core.util.PageUtils;
 import com.smart.starter.core.util.TreeUtil;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -60,19 +62,15 @@ public class SysDeptServiceImpl implements ISysDeptService {
 
     @Override
     public List<SysDeptResult> list(SysDeptQueryParam param) {
-        QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysDeptEntity.class));
         List<SysDeptEntity> entityList = mapper.selectList(queryWrapper);
         return CopyUtils.copyList(entityList, SysDeptResult.class);
     }
 
     @Override
     public Page<SysDeptResult> page(Page<SysDeptResult> page, SysDeptQueryParam param) {
-        QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>();
-        Page<SysDeptEntity> entityPage = new Page<>();
-        entityPage.setSize(page.getSize());
-        entityPage.setCurrent(page.getCurrent());
-        entityPage.setAsc(page.ascs());
-        entityPage.setDesc(page.descs());
+        QueryWrapper<SysDeptEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysDeptEntity.class));
+        Page<SysDeptEntity> entityPage = PageUtils.buildPage(page, SysDeptEntity.class);
         mapper.selectPage(entityPage, queryWrapper);
         Page<SysDeptResult> resultPage = CopyUtils.copyPage(entityPage, SysDeptResult.class);
         return resultPage;
@@ -92,7 +90,6 @@ public class SysDeptServiceImpl implements ISysDeptService {
      * @return
      */
     private List<SysDeptTreeResult> getDeptTree(List<SysDeptEntity> deptEntityList, String parentCode) {
-
         List<SysDeptTreeResult> treeList = deptEntityList.stream()
                 .filter(dept -> !dept.getCode().equals(dept.getParentCode()))
                 .map(dept -> {

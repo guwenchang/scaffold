@@ -16,15 +16,14 @@ import java.util.List;
 
 
 /**
- * 部门
- *
+ * 部门管理
  * @author guwenchang
  * @date 2019-05-23 15:14:18
  */
 @Api(tags = "部门管理")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/sysDept")
+@RequestMapping("/sys/sys-dept")
 public class SysDeptController extends BaseController  {
 
     private final ISysDeptService sysDeptService;

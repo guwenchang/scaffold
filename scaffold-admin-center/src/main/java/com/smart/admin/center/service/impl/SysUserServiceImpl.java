@@ -1,28 +1,34 @@
 package com.smart.admin.center.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Sets;
 import com.smart.admin.center.entity.SysMenuEntity;
 import com.smart.admin.center.entity.SysRoleEntity;
+import com.smart.admin.center.entity.SysUserEntity;
+import com.smart.admin.center.entity.SysUserRoleEntity;
 import com.smart.admin.center.mapper.SysMenuMapper;
 import com.smart.admin.center.mapper.SysRoleMapper;
-import com.smart.admin.center.result.SysMenuResult;
-import com.smart.starter.core.util.CopyUtils;
-import com.smart.admin.center.entity.SysUserEntity;
 import com.smart.admin.center.mapper.SysUserMapper;
-import com.smart.admin.center.service.ISysUserService;
-import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.smart.admin.center.mapper.SysUserRoleMapper;
 import com.smart.admin.center.param.SysUserParam;
 import com.smart.admin.center.param.SysUserQueryParam;
+import com.smart.admin.center.result.SysMenuResult;
+import com.smart.admin.center.result.SysRoleResult;
 import com.smart.admin.center.result.SysUserResult;
+import com.smart.admin.center.service.ISysUserService;
+import com.smart.starter.core.util.CopyUtils;
+import com.smart.starter.core.util.PageUtils;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import lombok.RequiredArgsConstructor;
 
 /**
  *
@@ -36,22 +42,34 @@ import lombok.RequiredArgsConstructor;
 public class SysUserServiceImpl implements ISysUserService {
 
     private final SysUserMapper mapper;
+    private final SysUserRoleMapper sysUserRoleMapper;
     private final SysMenuMapper sysMenuMapper;
     private final SysRoleMapper sysRoleMapper;
+    private final PasswordEncoder passwordEncoder;
 
 
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Boolean save(SysUserParam param) {
         SysUserEntity entity = CopyUtils.copyObject(param, SysUserEntity.class);
+        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         int insert = mapper.insert(entity);
+        updateUserRole(param, entity);
         return insert > 0;
     }
 
     @Override
     public Boolean update(SysUserParam param) {
         SysUserEntity entity = CopyUtils.copyObject(param, SysUserEntity.class);
+        if (StrUtil.isNotBlank(entity.getPassword())){
+            entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+        }
         int update = mapper.updateById(entity);
+        QueryWrapper<SysUserRoleEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(SysUserRoleEntity::getUserId, param.getId());
+        sysUserRoleMapper.delete(queryWrapper);
+        updateUserRole(param, entity);
         return update > 0;
 
     }
@@ -65,24 +83,23 @@ public class SysUserServiceImpl implements ISysUserService {
     @Override
     public SysUserResult get(Long id) {
         SysUserEntity entity = mapper.selectById(id);
-        return CopyUtils.copyObject(entity, SysUserResult.class);
+        SysUserResult sysUserResult = CopyUtils.copyObject(entity, SysUserResult.class);
+        List<SysRoleEntity> sysRoleEntities = sysRoleMapper.listRolesByUserId(id);
+        sysUserResult.setRoles(CopyUtils.copyList(sysRoleEntities, SysRoleResult.class));
+        return sysUserResult;
     }
 
     @Override
     public List<SysUserResult> list(SysUserQueryParam param) {
-        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysUserEntity.class));
         List<SysUserEntity> entityList = mapper.selectList(queryWrapper);
         return CopyUtils.copyList(entityList, SysUserResult.class);
     }
 
     @Override
     public Page<SysUserResult> page(Page<SysUserResult> page, SysUserQueryParam param) {
-        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>();
-        Page<SysUserEntity> entityPage = new Page<>();
-        entityPage.setSize(page.getSize());
-        entityPage.setCurrent(page.getCurrent());
-        entityPage.setAsc(page.ascs());
-        entityPage.setDesc(page.descs());
+        QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<>(CopyUtils.copyObject(param,SysUserEntity.class));
+        Page<SysUserEntity> entityPage = PageUtils.buildPage(page, SysUserEntity.class);
         mapper.selectPage(entityPage, queryWrapper);
         Page<SysUserResult> resultPage = CopyUtils.copyPage(entityPage, SysUserResult.class);
         return resultPage;
@@ -108,5 +125,12 @@ public class SysUserServiceImpl implements ISysUserService {
         return mapper.selectOne(new QueryWrapper<SysUserEntity>().lambda().eq(SysUserEntity::getUsername,username));
     }
 
-
+    private void updateUserRole(SysUserParam param, SysUserEntity entity) {
+        param.getRoleIds().forEach(roleId -> {
+            SysUserRoleEntity userRole = new SysUserRoleEntity();
+            userRole.setUserId(entity.getId());
+            userRole.setRoleId(roleId);
+            sysUserRoleMapper.insert(userRole);
+        });
+    }
 }

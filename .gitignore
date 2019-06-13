@@ -14,6 +14,7 @@ HELP.md
 ### IntelliJ IDEA ###
 .idea
 logs/
+scaffold-mysql/
 *.iws
 *.iml
 *.ipr

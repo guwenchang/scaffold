@@ -1,4 +1,4 @@
-package com.smart.admin.center.config;
+package com.smart.doc.center.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -22,7 +22,6 @@ public class CorsConfig {
         corsConfiguration.addAllowedMethod("*");
         //放行哪些原始域(头部信息)
         corsConfiguration.addAllowedHeader("*");
-
         return corsConfiguration;
     }
 

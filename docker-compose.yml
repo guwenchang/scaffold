@@ -1,0 +1,71 @@
+# 使用说明 V3.0.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  scaffold-mysql:
+    build:
+      context: ./
+      dockerfile: ./db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: scaffold-mysql
+    image: scaffold-mysql
+    ports:
+      - 3307:3306
+    volumes:
+      - ./scaffold-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+
+  scaffold-redis:
+    image: redis:5.0.4
+    restart: always
+    container_name: scaffold-redis
+    ports:
+      - 6379:6379
+
+  scaffold-rabbitmq:
+    image: rabbitmq:management
+    restart: always
+    container_name: scaffold-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5673:5672
+      - 15673:15672
+
+  scaffold-log-center:
+    build:
+      context: ./
+      dockerfile: ./scaffold-log-center/Dockerfile
+    restart: always
+    container_name: scaffold-log-center
+    image: scaffold-log-center
+    ports:
+      - 10010:10010
+
+  scaffold-doc-center:
+    build:
+      context: ./
+      dockerfile: ./scaffold-doc-center/Dockerfile
+    restart: always
+    container_name: scaffold-doc-center
+    image: scaffold-doc-center
+    ports:
+      - 10000:10000
+
+
+  scaffold-admin-center:
+    build:
+      context: ./
+      dockerfile: ./scaffold-admin-center/Dockerfile
+    restart: always
+    container_name: scaffold-admin-center
+    image: scaffold-admin-center
+    ports:
+      - 10020:10020
+

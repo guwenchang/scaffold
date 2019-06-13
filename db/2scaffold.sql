@@ -13,6 +13,7 @@
 
  Date: 06/13/2019 18:26:01 PM
 */
+USE scaffold;
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;

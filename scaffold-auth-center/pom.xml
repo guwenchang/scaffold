@@ -11,6 +11,9 @@
 	<version>1.0.0</version>
 	<name>scaffold-auth-center</name>
 	<description>Demo project for Spring Boot</description>
+	<properties>
+		<alipay-sdk-version>3.7.4.ALL</alipay-sdk-version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.smart</groupId>
@@ -37,6 +40,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>${alipay-sdk-version}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

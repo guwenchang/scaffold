@@ -33,3 +33,12 @@ swagger:
 logging:
   level:
     com.smart: debug
+
+auth:
+  third:
+    authConfigs:
+      GITHUB:
+        clientId: 765b2c66670efdd367ab
+        clientSecret: fe8c05bed078436c5c360829791962411ad5d6d8
+        redirectUri: http://localhost:10030/oauth/callback/github
+        alipayPublicKey:

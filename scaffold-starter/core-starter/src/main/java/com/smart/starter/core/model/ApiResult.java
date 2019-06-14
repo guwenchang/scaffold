@@ -13,7 +13,6 @@ import lombok.Setter;
  * @author guwenchang
  * @date 2019-05-17
  */
-
 public class ApiResult<T> {
 
     public static final int SUCCESS = 0;
@@ -28,7 +27,7 @@ public class ApiResult<T> {
     @ApiModelProperty("响应状态 0 成功，1 失败")
     @Setter
     @Getter
-    private int status;
+    private int code;
     /**
      * 返回结果状态信息
      */
@@ -70,20 +69,20 @@ public class ApiResult<T> {
     }
 
     public ApiResult() {
-        this.status = SUCCESS;
+        this.code = SUCCESS;
         this.msg = SUCCESS_MSG;
         this.data = null;
     }
 
     public ApiResult(int status, String msg, T data) {
-        this.status = status;
+        this.code = status;
         this.msg = msg;
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return "ApiResult{" + "status=" + status + ", msg='" + msg + '\'' + ", data=" + JSON.toJSONString(data) + "}";
+        return "ApiResult{" + "code=" + code + ", msg='" + msg + '\'' + ", data=" + JSON.toJSONString(data) + "}";
     }
 
 }

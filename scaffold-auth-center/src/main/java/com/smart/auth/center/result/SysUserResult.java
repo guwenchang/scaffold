@@ -1,82 +1,68 @@
-package com.smart.admin.center.entity;
+package com.smart.auth.center.result;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
- * 系统用户 实体
+ *
+ * 系统用户 结果集
  *
  * @author guxiaobai
  * @date 2019-05-24
  */
 @Data
-@TableName("t_sys_user")
-public class SysUserEntity implements Serializable {
+public class SysUserResult implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     /**
      * 用户ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @ApiModelProperty(value = "用户ID")
     private Long id;
-
     /**
      * 用户名
      */
+    @ApiModelProperty(value = "用户名")
     private String username;
-
     /**
      * 真实姓名
      */
+    @ApiModelProperty(value = "真实姓名")
     private String realName;
-
-    /**
-     * 密码
-     */
-    private String password;
-
     /**
      * 手机号
      */
+    @ApiModelProperty(value = "手机号")
     private String mobile;
-
     /**
      * 头像
      */
+    @ApiModelProperty(value = "头像")
     private String avatar;
-
     /**
      * 部门ID
      */
+    @ApiModelProperty(value = "部门ID")
     private Long deptId;
-
-    /**
-     * 用户状态 1 正常 ，2 冻结
-     */
-    private Integer status = 1;
-
     /**
      * 创建时间
      */
+    @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
-
     /**
      * 修改时间
      */
+    @ApiModelProperty(value = "修改时间")
     private LocalDateTime updateTime;
 
     /**
-     * 是否删除 0 正常，1 删除
+     * 角色集合
      */
-    @TableLogic
-    private Boolean delFlag;
-
+    @ApiModelProperty(value = "角色集合")
+    private List<SysRoleResult> roles;
 
 }

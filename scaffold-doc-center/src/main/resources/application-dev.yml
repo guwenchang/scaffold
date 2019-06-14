@@ -9,3 +9,7 @@ swagger:
         name: admin-api
         api-docs-path: /v2/api-docs
         server-url: http://localhost:10020
+      auth-api:
+        name: auth-api
+        api-docs-path: /v2/api-docs
+        server-url: http://localhost:10030

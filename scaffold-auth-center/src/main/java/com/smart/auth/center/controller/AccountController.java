@@ -1,13 +1,13 @@
-package com.smart.admin.center.controller;
+package com.smart.auth.center.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.google.common.collect.Maps;
-import com.smart.admin.center.entity.SysUserEntity;
-import com.smart.admin.center.param.LoginForm;
-import com.smart.admin.center.result.SysMenuResult;
-import com.smart.admin.center.service.ISysUserService;
+
+import com.smart.auth.center.entity.SysUserEntity;
+import com.smart.auth.center.param.LoginForm;
+import com.smart.auth.center.result.SysMenuResult;
+import com.smart.auth.center.service.ISysUserService;
 import com.smart.starter.core.model.ApiResult;
 import com.smart.starter.core.model.BaseController;
 import com.smart.starter.log.annotation.OpLog;
@@ -57,6 +57,9 @@ public class AccountController extends BaseController {
         if (sysUserEntity == null || !passwordEncoder.matches(loginForm.getPassword(), sysUserEntity.getPassword())) {
             return ApiResult.error("账号或密码错误");
         }
+        if (sysUserEntity.getStatus() == 2) {
+            return ApiResult.error("账户被冻结");
+        }
         return login(sysUserEntity);
     }
 
@@ -78,8 +81,6 @@ public class AccountController extends BaseController {
         data.put("user", user);
         return ApiResult.success(data);
     }
-
-
     public static void main(String[] args) {
         System.out.println(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("123456"));
     }

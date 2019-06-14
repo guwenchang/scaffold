@@ -1,4 +1,4 @@
-package com.smart.admin.center.entity;
+package com.smart.auth.center.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

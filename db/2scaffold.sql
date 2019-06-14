@@ -11,9 +11,8 @@
  Target Server Version : 50710
  File Encoding         : utf-8
 
- Date: 06/13/2019 18:26:01 PM
+ Date: 06/14/2019 16:22:06 PM
 */
-USE scaffold;
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -42,13 +41,13 @@ CREATE TABLE `t_op_log` (
   KEY `idx_log_type` (`log_type`) USING BTREE,
   KEY `idx_create_date` (`create_time`) USING BTREE,
   KEY `idx_app` (`app`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='日志';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='日志';
 
 -- ----------------------------
 --  Records of `t_op_log`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_op_log` VALUES ('12', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '547', null, null, '2019-05-24 11:02:01'), ('13', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '439', null, null, '2019-05-24 14:26:29'), ('14', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '459', null, null, '2019-05-24 14:41:21'), ('15', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '672', null, null, '2019-05-31 14:36:36'), ('16', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"123456\"}]', '93', null, null, '2019-05-31 15:07:28'), ('17', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '523', null, null, '2019-05-31 15:07:37'), ('18', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '454', null, null, '2019-05-31 15:31:19'), ('19', 'op', '用户登录', 'scaffold-admin-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '572', null, null, '2019-05-31 15:58:54');
+INSERT INTO `t_op_log` VALUES ('20', 'op', '用户登录', 'scaffold-auth-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '663', null, null, '2019-06-14 16:09:02'), ('21', 'op', '用户登录', 'scaffold-auth-center', '0:0:0:0:0:0:0:1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36', '/auth/login', 'POST', '[{\"password\":\"123456\",\"username\":\"admin\"}]', '91', null, null, '2019-06-14 16:13:15');
 COMMIT;
 
 -- ----------------------------
@@ -182,9 +181,10 @@ CREATE TABLE `t_sys_user` (
   `mobile` varchar(20) NOT NULL COMMENT '手机号',
   `avatar` varchar(200) NOT NULL COMMENT '头像',
   `dept_id` bigint(20) NOT NULL COMMENT '部门ID',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '用户状态 1 正常，2 冻结',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  `del_flag` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否删除 0 正常，1 删除',
+  `del_flag` bit(1) NOT NULL COMMENT '是否删除 0 正常，1 删除',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_idx1_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='系统用户';
@@ -193,7 +193,7 @@ CREATE TABLE `t_sys_user` (
 --  Records of `t_sys_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_sys_user` VALUES ('1', 'admin', 'admin', '{bcrypt}$2a$10$skv/RJ8YRn2/86XvyikopuJ5n4CDGlFSLvVmHhWTe7btQ3dlhplja', '17034642888', '', '2', '2018-04-20 07:15:18', '2019-05-24 10:05:01', b'0'), ('3', 'admin1', 'keke', '{bcrypt}$2a$10$jMonf/zBatiIkG8s444BA.Raw0rLXPo7urGz5wqoSDv/6sDbX6cTW', '15210015381', 'string', '1', '2019-05-31 15:32:24', '2019-05-31 15:41:26', b'0');
+INSERT INTO `t_sys_user` VALUES ('1', 'admin', 'admin', '{bcrypt}$2a$10$skv/RJ8YRn2/86XvyikopuJ5n4CDGlFSLvVmHhWTe7btQ3dlhplja', '17034642888', '', '2', '1', '2018-04-20 07:15:18', '2019-05-24 10:05:01', b'0'), ('3', 'admin1', 'keke', '{bcrypt}$2a$10$jMonf/zBatiIkG8s444BA.Raw0rLXPo7urGz5wqoSDv/6sDbX6cTW', '15210015381', 'string', '1', '1', '2019-05-31 15:32:24', '2019-05-31 15:41:26', b'0');
 COMMIT;
 
 -- ----------------------------

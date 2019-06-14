@@ -17,6 +17,7 @@
         <module>scaffold-doc-center</module>
         <module>scaffold-log-center</module>
         <module>scaffold-admin-center</module>
+        <module>scaffold-auth-center</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

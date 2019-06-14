@@ -1,4 +1,4 @@
-package com.smart.admin.center.entity;
+package com.smart.auth.center.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,57 +10,37 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 系统用户 实体
+ * 角色 实体
  *
  * @author guxiaobai
  * @date 2019-05-24
  */
 @Data
-@TableName("t_sys_user")
-public class SysUserEntity implements Serializable {
+@TableName("t_sys_role")
+public class SysRoleEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * 角色ID
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户名
+     * 角色名称
      */
-    private String username;
+    private String roleName;
 
     /**
-     * 真实姓名
+     * 角色编码
      */
-    private String realName;
+    private String roleCode;
 
     /**
-     * 密码
+     * 角色描述
      */
-    private String password;
-
-    /**
-     * 手机号
-     */
-    private String mobile;
-
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
-     * 部门ID
-     */
-    private Long deptId;
-
-    /**
-     * 用户状态 1 正常 ，2 冻结
-     */
-    private Integer status = 1;
+    private String roleDesc;
 
     /**
      * 创建时间
@@ -68,7 +48,7 @@ public class SysUserEntity implements Serializable {
     private LocalDateTime createTime;
 
     /**
-     * 修改时间
+     * 更新时间
      */
     private LocalDateTime updateTime;
 

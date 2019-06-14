@@ -58,7 +58,6 @@ services:
     ports:
       - 10000:10000
 
-
   scaffold-admin-center:
     build:
       context: ./
@@ -69,3 +68,12 @@ services:
     ports:
       - 10020:10020
 
+  scaffold-auth-center:
+    build:
+      context: ./
+      dockerfile: ./scaffold-auth-center/Dockerfile
+    restart: always
+    container_name: scaffold-auth-center
+    image: scaffold-auth-center
+    ports:
+      - 10030:10030

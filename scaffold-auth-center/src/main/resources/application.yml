@@ -1,0 +1,35 @@
+server:
+  port: 10030
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: dev
+mybatis-plus:
+  # MyBatis Mapper所对应的XML文件位置
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.smart.auth.center.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      field-strategy: not_null
+      table-underline: true
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+smart:
+  security:
+    ignore-urls:
+      - /swagger/**
+      - /v2/api-docs
+      - /swagger-resources
+      - /error
+    jwt:
+      # jwt sign算法
+      algorithm: hs512
+      # jwt secret
+      secret: http-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-mehttp-security-secret-modify-me
+      # jwt 有效时间
+      expiration-in-second: 1209600

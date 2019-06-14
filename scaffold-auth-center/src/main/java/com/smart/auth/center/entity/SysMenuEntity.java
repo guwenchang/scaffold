@@ -1,7 +1,5 @@
-package com.smart.admin.center.entity;
+package com.smart.auth.center.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -10,57 +8,63 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 系统用户 实体
+ * 菜单权限 实体
  *
  * @author guxiaobai
  * @date 2019-05-24
  */
 @Data
-@TableName("t_sys_user")
-public class SysUserEntity implements Serializable {
+@TableName("t_sys_menu")
+public class SysMenuEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 用户ID
+     * 菜单ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    /**
-     * 用户名
-     */
-    private String username;
+    private String code;
 
     /**
-     * 真实姓名
+     * 菜单名称
      */
-    private String realName;
+    private String name;
 
     /**
-     * 密码
+     * 菜单权限标识
      */
-    private String password;
+    private String permission;
 
     /**
-     * 手机号
+     * 前端URL
      */
-    private String mobile;
+    private String path;
 
     /**
-     * 头像
+     * 父菜单ID
      */
-    private String avatar;
+    private String parentCode;
 
     /**
-     * 部门ID
+     * 图标
      */
-    private Long deptId;
+    private String icon;
 
     /**
-     * 用户状态 1 正常 ，2 冻结
+     * 页面名称
      */
-    private Integer status = 1;
+    private String component;
+
+    /**
+     * 排序值
+     */
+    private Integer sort;
+
+    /**
+     * 菜单类型 1 菜单，2 功能
+     */
+    private Integer type;
 
     /**
      * 创建时间
@@ -68,7 +72,7 @@ public class SysUserEntity implements Serializable {
     private LocalDateTime createTime;
 
     /**
-     * 修改时间
+     * 更新时间
      */
     private LocalDateTime updateTime;
 
